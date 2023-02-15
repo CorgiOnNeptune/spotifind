@@ -39,7 +39,7 @@ export default function SocketHandler(req, res) {
 
           // if error (status code isn't 200 or 204) try again later
           if (!playerState) {
-            setTimeout(socket.poll, 1000);
+            setTimeout(socket.poll, 300);
             return;
           }
           // no active player
@@ -83,7 +83,7 @@ export default function SocketHandler(req, res) {
           }
           // console.log('1', playerState.name);
           // console.log('2', socket.playerState.name);
-          setTimeout(socket.poll, 1000); // decrease this to improve responsiveness
+          setTimeout(socket.poll, 300); // decrease this to improve responsiveness
           // for casual testing 1-2s is recommended
           // could remove the timeout and call it directly (long polling) when doing a demo
           // 🚨👀 remember to close the tab/turn off the server when you aren't using because
@@ -91,7 +91,7 @@ export default function SocketHandler(req, res) {
         })
         .catch(err => {
           console.log(err);
-          setTimeout(socket.poll, 1000);
+          setTimeout(socket.poll, 300);
         });
     };
 
