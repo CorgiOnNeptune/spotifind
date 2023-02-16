@@ -5,7 +5,7 @@ import { COMMENTS, LYRICS, SPOTIFY_BASE_URL } from 'public/constants/pathNames';
 import { getHeaders, getLyricsFromData } from '@/helpers/helpers';
 
 export default function useSongId(songId) {
-  const { credentials, displayTrack, setDisplayTrack, setComments } =
+  const { credentials, displayTrack, setDisplayTrack, setComments, profile } =
     useGlobalContext();
 
   useEffect(() => {
@@ -48,7 +48,8 @@ export default function useSongId(songId) {
 
   useEffect(() => {
     console.log('calling /api/comments');
-    axios(`${COMMENTS}/${songId}`)
+    axios
+      .post(`${COMMENTS}/${songId}`, { userUri: profile.uri })
       .then(response => {
         setComments(response.data);
       })

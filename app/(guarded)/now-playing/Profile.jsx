@@ -26,7 +26,7 @@ export default function Profile() {
           {profile.pfp ? (
             <Image
               alt="pfp"
-              className="rounded-3xl"
+              className="rounded-3xl drop-shadow-[0_0.2rem_0.3rem_rgb(0,0,0,0.6)]"
               height={200}
               src={profile.pfp}
               width={200}
@@ -61,7 +61,14 @@ export default function Profile() {
                 );
               })
             ) : (
-              <Skeleton className="w-[200px] h-[200px] rounded-3xl" />
+              <>
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+                <Skeleton className="w-[160px] h-[160px] rounded-3xl mr-[30px]" />
+              </>
             )}
           </div>
         </Container>
