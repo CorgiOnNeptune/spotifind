@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import Image from 'next/image';
 import { useState } from 'react';
 import {
@@ -17,8 +20,8 @@ import CommentList from './CommentList';
 import {
   createComment,
   deleteComment,
-  updateComment,
-  toggleCommentLike
+  toggleCommentLike,
+  updateComment
 } from '@/helpers/comments';
 import { useAsyncFn } from '@/hooks/useAsync';
 
@@ -116,7 +119,7 @@ export default function Comment({
         <div className="flex flex-col justify-evenly mr-[20px] w-[80px]">
           <Image
             alt="user-pfp"
-            className="rounded-2xl cursor-pointer transition duration-200 ease-out hover:scale-105"
+            className="rounded-2xl cursor-pointer transition duration-200 ease-out hover:scale-105 drop-shadow-[0_0.2rem_0.3rem_rgb(0,0,0,0.6)]"
             height={80}
             src={author?.profilePictureUrl || ''}
             width={80}
@@ -202,13 +205,13 @@ export default function Comment({
       {isReplying && (
         <div className="">
           <CommentForm
-            postButtonName="Reply"
             autoFocus
             containerClasses="h-22 w-[calc(100%-30px)] bg-[#2b2133] mt-3 mx-auto"
             error={createCommentFn.error}
             footerClasses="mt-3"
             loading={createCommentFn.loading}
             onSubmit={onReplyComment}
+            postButtonName="Reply"
           />
         </div>
       )}
@@ -220,7 +223,8 @@ export default function Comment({
               <div className="flex ">
                 <div
                   className="border-r-2 border-[#ffffff18] border-solid w-[30px] hover:border-r-3 hover:border-[#ffffff87] hover:cursor-pointer"
-                  onClick={() => setChildrenHidden(true)}></div>
+                  onClick={() => setChildrenHidden(true)}
+                />
                 <div className="grow">
                   <CommentList
                     comments={childComments}
@@ -232,10 +236,10 @@ export default function Comment({
 
             <IconButton
               aria-label="Expand"
+              hidden={`${childrenHidden ? '' : 'hidden'}`}
               hover="hover:text-blue-300"
               Icon={FaAngleDoubleDown}
               onClick={() => setChildrenHidden(false)}
-              hidden={`${childrenHidden ? '' : 'hidden'}`}
               position="ml-[40px]"
             />
           </>

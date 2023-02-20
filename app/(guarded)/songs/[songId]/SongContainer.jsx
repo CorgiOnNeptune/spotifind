@@ -166,11 +166,12 @@ export default function SongContainer({ track }) {
       {view === 'comments' && (
         <div className="flex flex-col justify-start items-around w-[43%] h-full  min-h-[800px] mt-[60px]">
           <div className="flex justify-center">
-            <Image
+            <AlbumCover
               alt="album artwork"
               className="rounded-3xl m-4"
               height={230}
               src={albumCoverUrl}
+              uri={uri}
               width={230}
             />
             <div className="flex flex-col justify-evenly items-center w-full text-2xl font-semibold m-4 text-center line-clamp-4">
