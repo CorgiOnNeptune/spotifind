@@ -9,8 +9,11 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "npx prettier --write .",
-    "db:reset": "npx prisma db pull && npx prisma validate && npx prisma generate",
-    "db:push": "npx prisma validate && npx prisma generate && npx prisma db push"
+    "db:up": "sudo bash ./start-database.sh",
+    "db:generate": "prisma migrate dev",
+    "db:migrate": "prisma migrate deploy",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.6",
