@@ -1,9 +1,8 @@
 const querystring = require('querystring');
 
-const clientId = process.env.SPOTIFY_CLIENT_ID;
-
 // redirect to /api/token to exchange authentication key for access token
-const redirectUri = 'http://localhost:3000/api/token';
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const redirectUri = process.env.REDIRECT_URI;
 
 export default function handler(req, res) {
   const scope =
